@@ -11,6 +11,7 @@ const publishAsync = function (registry, path, callback) {
 
         let tgz = path + '.tgz'
 
+        npm.config.set('registry', registry)
         npm.commands.publish([tgz], (err, data) => {
 
             if (err) return callback(err);
@@ -73,11 +74,9 @@ function getRemainingVersions (moduleName, oldRegistry, newRegistry, oldRegistry
                 console.log('Remaining Versions to Migrate', remainingVersions);
             }
 
+            npm.config.set('registry', oldRegistry);
             resolve(remainingVersions);
-
         });
-        npm.config.set('registry', oldRegistry);
-
   });
 
 }
