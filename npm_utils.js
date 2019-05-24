@@ -74,9 +74,9 @@ function getRemainingVersions (moduleName, oldRegistry, newRegistry, oldRegistry
                 console.log('Remaining Versions to Migrate', remainingVersions);
             }
 
-            npm.config.set('registry', oldRegistry);
             resolve(remainingVersions);
         });
+        npm.config.set('registry', oldRegistry);
   });
 
 }
